@@ -1,8 +1,19 @@
-<h1>Список Книг</h1>
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<h1>Список книг</h1>
 {% for i in emp %}
-<br>
-<img src="{{ i.image.url }}" width="350", height="300">
-<h2>Имя - {{ i.name }}</h2>
-<a href="/books/{{ i.id }}/">Подробнее</a>
+<div class="card" style="width: 18rem;">
+  <img src="{{ i.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ i.name }}</h5>
+    <a href="/employees/{{ i.id }}/" class="btn btn-primary">Подробнее</a>
+  </div>
+</div>
 <br>
 {% endfor %}
+
+{% include '../footer.html' %}
