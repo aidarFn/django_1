@@ -1,9 +1,8 @@
-<h1>Список Мугивар</h1>
+<h1>Список Книг</h1>
 {% for i in emp %}
 <br>
 <img src="{{ i.image.url }}" width="350", height="300">
 <h2>Имя - {{ i.name }}</h2>
-<p>Должность - {{ i.programming_status }}</p>
 <a href="/books/{{ i.id }}/">Подробнее</a>
 <br>
 {% endfor %}
