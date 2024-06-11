@@ -13,6 +13,8 @@ def horror_tags_view(request):
             template_name='all_genre/horror_tags.html',
             context={'horror_tags': horror_tags}
         )
+
+
 def fantasy_tags_view(request):
     if request.method == 'GET':
         fantasy_tags = models.BookAge.objects.filter(tags__name='Fantasy').order_by('-id')
@@ -21,6 +23,8 @@ def fantasy_tags_view(request):
             template_name='all_genre/fantasy_tags.html',
             context={'fantasy_tags': fantasy_tags}
         )
+
+
 def romance_tags_view(request):
     if request.method == 'GET':
         romance_tags = models.BookAge.objects.filter(tags__name='Romance').order_by('-id')
@@ -29,6 +33,8 @@ def romance_tags_view(request):
             template_name='all_genre/romance_tags.html',
             context={'romance_tags': romance_tags}
         )
+
+
 def drama_tags_view(request):
     if request.method == 'GET':
         drama_tags = models.BookAge.objects.filter(tags__name='Drama').order_by('-id')
@@ -37,6 +43,8 @@ def drama_tags_view(request):
             template_name='all_genre/drama_tags.html',
             context={'drama_tags': drama_tags}
         )
+
+
 def comedy_tags_view(request):
     if request.method == 'GET':
         comedy_tags = models.BookAge.objects.filter(tags__name='Comedy').order_by('-id')
@@ -45,7 +53,6 @@ def comedy_tags_view(request):
             template_name='all_genre/comedy_tags.html',
             context={'comedy_tags': comedy_tags}
         )
-
 
 
 def all_genre(request):
