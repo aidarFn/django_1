@@ -2,7 +2,87 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from datetime import datetime
 import random
-from . import models
+from . import models, forms
+from django.shortcuts import render, get_object_or_404
+
+
+def edit_book_view(request,id):
+    book_id = get_object_or_404(models.Books, id=id)
+    if request.method == 'POST':
+        form = forms.BookForm(request.POST, instance=book_id)
+        form.save()
+        return HttpResponse('<h3>Employee update successfully!</h3>'
+                            '<a href="/books/">Список книг</a>')
+    else:
+        form = forms.BookForm(instance=book_id)
+    return render(
+        request,
+        template_name='books/edit_book.html',
+        context={
+            'form': form,
+            'book': book_id,
+        }
+    )
+
+
+
+
+
+
+
+def drop_book_view(request, id):
+    book_id = get_object_or_404(models.Books, id=id)
+    book_id.delete()
+    return HttpResponse('<h3>Book delete successfully!</h3>'
+                        '<a href="/books/">Список книг</a>')
+
+
+
+
+
+
+
+
+
+
+def create_book_view(request):
+    if request.method == 'POST':
+        form = forms.BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('<h3>Book created successfully!</h3>'
+                                '<a href="/books/">Список книг</a>')
+
+    else:
+        form = forms.BookForm()
+
+    return render(
+        request,
+        template_name='books/create_book.html',
+        context={'form': form}
+
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def horror_tags_view(request):
