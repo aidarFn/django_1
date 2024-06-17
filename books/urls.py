@@ -10,11 +10,12 @@ urlpatterns = [
     path('romance/', views.romance_tags_view),
 
 
-    path('books/', views.books_list),
-    path('books/<int:id>/', views.books_detail_view),
-    path('books/<int:id>/delete/', views.drop_book_view),
-    path('books/<int:id>/update/', views.edit_book_view),
-    path('create_book/', views.create_book_view),
+    path('books/', views.BookListView.as_view(), name='books'),
+    path('books/<int:id>/', views.BookDetailView.as_view()),
+    path('books/<int:id>/delete/', views.DeleteBookView.as_view()),
+    path('books/<int:id>/update/', views.EditBookView.as_view()),
+    path('create_book/', views.CreateBookView.as_view()),
+    path('search/', views.SearchView.as_view(), name='search'),
 
     path('name/', views.name_view),
     path('hobby/', views.hobby_view),
