@@ -19,14 +19,6 @@ class BookAge(models.Model):
         return self.title
 
 
-
-
-
-
-
-
-
-
 class Books(models.Model):
 
     # PROGRAMMING_STATUS = (
@@ -38,7 +30,7 @@ class Books(models.Model):
 
     name = models.CharField(max_length=100)
     # email = models.EmailField(default='@gmail.com')
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to="images/")
     about_emp = models.TextField()
     # programming_status = models.CharField(max_length=100, choices=PROGRAMMING_STATUS, null=True)
     # rezume = models.FileField(upload_to='rezume/')
@@ -47,21 +39,23 @@ class Books(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.name}'
+        return f"{self.name}"
 
     class Meta:
-        verbose_name = 'Книгу'
-        verbose_name_plural = 'Книги'
+        verbose_name = "Книгу"
+        verbose_name_plural = "Книги"
 
 
 class ReviewBooks(models.Model):
-    reviews_book = models.ForeignKey(Books, on_delete=models.CASCADE, related_name='reviews_book')
+    reviews_book = models.ForeignKey(
+        Books, on_delete=models.CASCADE, related_name="reviews_book"
+    )
 
     text = models.TextField()
-    stars = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    stars = models.PositiveIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.stars}-{self.reviews_book}'
-
-
+        return f"{self.stars}-{self.reviews_book}"

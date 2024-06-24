@@ -5,4 +5,4 @@ from . import models
 class BookForm(forms.ModelForm):
     class Meta:
         model = models.Books
-        fields = '__all__'
+        fields = "__all__"
