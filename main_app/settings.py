@@ -13,7 +13,7 @@ load_dotenv()
 SECRET_KEY = "django-insecure-rv1iema8(4m56@x1gia@jknvo4h9$%8v1(fk7*6d$cv@6&7qvm"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get("DEBUG") == "on":
+if os.environ.get("DEBUG") == "off":
     DEBUG = True
 else:
     DEBUG = False
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "books",
+    "users",
 ]
 
 MIDDLEWARE = [
